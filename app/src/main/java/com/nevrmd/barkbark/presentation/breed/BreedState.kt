@@ -1,3 +1,5 @@
 package com.nevrmd.barkbark.presentation.breed
 
-class BreedState
+data class BreedState(
+    val id: Int = 0,
+)

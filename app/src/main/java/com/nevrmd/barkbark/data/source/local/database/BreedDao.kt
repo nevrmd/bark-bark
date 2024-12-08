@@ -11,7 +11,7 @@ import com.nevrmd.barkbark.domain.BreedEntity
 
 @Dao
 interface BreedDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertBreed(breed: BreedEntity): Long
 
     @Update
@@ -22,4 +22,7 @@ interface BreedDao {
 
     @Query("SELECT * FROM BreedEntity")
     fun getAllBreeds(): LiveData<List<BreedEntity>>
+
+    @Query("SELECT * FROM BreedEntity WHERE id = :id")
+    fun getBreedById(id: Int): BreedEntity
 }

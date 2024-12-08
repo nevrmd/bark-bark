@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".presentation.home.HomeFragment"
     android:layout_marginHorizontal="10dp"
-    android:layout_marginTop="10dp"
-    android:background="@color/accent">
+    android:layout_marginTop="10dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBreeds"

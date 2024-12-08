@@ -15,17 +15,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 const val API_MAX_PAGES = 28
-const val API_MAX_BREEDS_PER_PAGE = 10
 
 class HomeViewModel(private val repository: BreedRepository) : BaseViewModel<HomeState>(
     initialState = HomeState()
 ) {
 
     fun getBreeds() = repository.breeds
-
-    fun checkIfBreedPresent(breedName: String) {
-
-    }
 
     fun insertAllBreeds() {
         var currentPageNumber = 0
@@ -47,12 +42,12 @@ class HomeViewModel(private val repository: BreedRepository) : BaseViewModel<Hom
             try {
                 val response = api.getBreedsByPageNumber(pageNumber).data
 
-                var currentBreedNumber = -1
+                val totalBreedsOnPage = response.size
+                var currentBreedNumber = 0
 
-                while (currentBreedNumber != API_MAX_BREEDS_PER_PAGE) {
-                    currentBreedNumber++
+                while (currentBreedNumber != totalBreedsOnPage) {
                     insert(BreedEntity(
-                        response[currentBreedNumber].id,
+                        0,
                         response[currentBreedNumber].attributes.name,
                         response[currentBreedNumber].attributes.description,
                         response[currentBreedNumber].attributes.hypoallergenic,
@@ -60,9 +55,10 @@ class HomeViewModel(private val repository: BreedRepository) : BaseViewModel<Hom
                         response[currentBreedNumber].attributes.life.max,
                         pageNumber,
                     ))
+                    currentBreedNumber++
                 }
             } catch (e: Exception) {
-                Log.e("Home", "Error ${e.message}")
+                Log.e("Home", "Error ${e.message}. Page $pageNumber")
             }
         }
     }

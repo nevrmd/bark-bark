@@ -10,11 +10,7 @@ class BreedRepository(private val dao: BreedDao) {
         return dao.insertBreed(note)
     }
 
-    suspend fun update(note: BreedEntity) {
-        return dao.updateBreed(note)
-    }
-
-    suspend fun delete(note: BreedEntity) {
-        return dao.deleteBreed(note)
+    fun getBreedById(id: Int): BreedEntity {
+        return dao.getBreedById(id)
     }
 }

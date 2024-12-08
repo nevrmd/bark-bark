@@ -3,4 +3,7 @@
     <string name="tvBreedName">BreedName</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tvBreedDescription">BreedDescription</string>
+    <string name="tvBreedIsHypoallergenic">isHypoallergenic</string>
+    <string name="tvBreedLifeMinMax">lifeMin - lifeMax</string>
 </resources>

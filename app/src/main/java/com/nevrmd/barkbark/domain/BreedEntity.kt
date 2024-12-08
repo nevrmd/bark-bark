@@ -6,11 +6,11 @@ import androidx.room.PrimaryKey
 @Entity
 data class BreedEntity(
     // General
-    @PrimaryKey
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     val name: String,
     val description: String,
-    val hypoallergenic: Boolean,
+    val isHypoallergenic: Boolean,
     // Life Expectancy
     val lifeMin: Int,
     val lifeMax: Int,
